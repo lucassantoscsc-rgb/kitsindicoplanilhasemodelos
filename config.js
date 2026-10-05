@@ -11,7 +11,7 @@
 window.KIT_CONFIG = {
   // ---- Checkout (links externos) ----------------------------
   checkout: {
-    essencial: "[LINK_CHECKOUT_17]", // ex.: "https://pay.exemplo.com/abc"
+    essencial: "https://pay.cakto.com.br/35dbjmr",
     completo: "https://pay.cakto.com.br/3pmy9fp_1169380"
   },
 
