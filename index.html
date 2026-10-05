@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kit Síndico — Painel de Controle do Síndico em Excel</title>
+  <meta name="description" content="Planilha de Excel pronta para síndicos: veja o que está atrasado, o que vence e quanto foi gasto em um ou até 100 condomínios. Com exemplo preenchido e passo a passo. Garantia de 7 dias.">
+  <meta name="theme-color" content="#142D4E">
+
+  <!-- Troque [URL_DO_SITE] pelo domínio final (ex.: https://kitsindico.com.br) -->
+  <link rel="canonical" href="[URL_DO_SITE]/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Kit Síndico — o condomínio inteiro num painel só">
+  <meta property="og:description" content="Planilha pronta em Excel: tarefas, manutenções, pedidos de moradores, orçamentos e despesas de um ou até 100 condomínios.">
+  <meta property="og:url" content="[URL_DO_SITE]/">
+  <meta property="og:image" content="[URL_DO_SITE]/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Kit Síndico — Painel de Controle do Síndico em Excel">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+  <link rel="preload" as="image" href="assets/img/hero-painel.svg" fetchpriority="high">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="config.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+
+<!-- Ícones (SVG sprite) -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M7 7l10 10M17 7L7 17"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 5h16v11H9l-5 4z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8 9.5h8M8 12.5h5"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M14.5 4.5a4.5 4.5 0 0 0-5.6 5.8L3.5 15.7a2 2 0 0 0 2.8 2.8l5.4-5.4a4.5 4.5 0 0 0 5.8-5.6l-2.7 2.7-2.6-.5-.5-2.6z"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M9 8h6M9 12h6"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 21V5l8-2v18M12 8h8v13M2 21h20"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M7.5 8h1M7.5 12h1M7.5 16h1M15.5 12h1M15.5 16h1"/></symbol>
+  <symbol id="i-question" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.7M12 17h.01"/></symbol>
+  <symbol id="i-panel" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M3 9h18M9 21V9"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M13 17v-3M16 17v-5M19 17v-2"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M9 6h11M9 12h11M9 18h11"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3.5 6l1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M2 6h12v10H2zM14 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="2" fill="#fff" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="18" r="2" fill="#fff" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></symbol>
+  <symbol id="i-money" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M10 21h4"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 11l9-7 9 7v10h-6v-6H9v6H3z"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M11.2 11.8L20 3M16 7l3 3M18.5 4.5l2 2"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l2 2.5h8.5A1.5 1.5 0 0 1 21 9v9.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M6 3h8l5 5v13H6zM14 3v5h5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3.5 6.5l8.5 6.5 8.5-6.5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></symbol>
+</svg>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- 1. Barra superior -->
+<div class="topbar">
+  <p><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> Garantia de <span data-bind="garantia">7</span> dias &nbsp;•&nbsp; Acesso imediato por e-mail</p>
+</div>
+
+<main id="conteudo">
+
+  <!-- 2. HERO -->
+  <!--
+    HEADLINES PARA TESTE A/B (a usada está marcada com ★):
+    ★ 1. "Saiba o que está atrasado, o que vence e quanto foi gasto. Tudo num painel só."
+      2. "O condomínio inteiro sob controle em uma planilha pronta — sem montar nada do zero."
+      3. "Pare de administrar o condomínio pela memória e pelo WhatsApp."
+      4. "Chegue à prestação de contas com tudo anotado, conferido e no lugar."
+      5. "Um ou 100 condomínios: um painel mostra o que precisa da sua atenção hoje."
+  -->
+  <section class="hero" id="topo">
+    <div class="container hero__grid">
+      <div class="hero__text">
+        <p class="eyebrow">Para síndicos moradores e profissionais</p>
+        <h1>Saiba o que está atrasado, o que vence e quanto foi gasto. <span class="hl">Tudo num painel só.</span></h1>
+        <p class="hero__sub">O <strong>Painel de Controle do Síndico</strong> é uma planilha de Excel pronta que reúne tarefas, manutenções, pedidos de moradores, orçamentos e despesas — de um condomínio ou de até 100. Você não monta nada: só preenche.</p>
+        <a class="btn btn--cta btn--lg" href="#ofertas">Quero organizar meu condomínio <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <p class="microcopy">Acesso imediato • Arquivos para Excel e Word • Garantia de <span data-bind="garantia">7</span> dias</p>
+      </div>
+      <div class="hero__media">
+        <!-- Substitua por: assets/img/hero-painel.webp (1200x800). Mantenha width/height. -->
+        <div class="device">
+          <div class="device__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <img src="assets/img/hero-painel.svg" width="1200" height="800" fetchpriority="high" decoding="async"
+               alt="Painel geral da planilha mostrando tarefas atrasadas, manutenções que vencem em 30 dias, solicitações abertas e despesas previstas versus realizadas">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. DOR -->
+  <section class="section section--gray" id="dor">
+    <div class="container narrow">
+      <h2 class="reveal">O WhatsApp do síndico não para. <br class="br-d">E a cabeça também não.</h2>
+      <p class="lead reveal">Se você cuida de um condomínio, provavelmente reconhece pelo menos uma destas cenas:</p>
+      <ul class="pain-list">
+        <li class="reveal"><span class="pain-ic"><svg aria-hidden="true"><use href="#i-chat"/></svg></span><p><strong>23h, o celular apita.</strong> Um morador quer saber do conserto do portão. Você não lembra em que pé está.</p></li>
+        <li class="reveal"><span class="pain-ic"><svg aria-hidden="true"><use href="#i-wrench"/></svg></span><p><strong>A manutenção ficou para depois.</strong> Até que a bomba para, vira emergência e sai mais caro.</p></li>
+        <li class="reveal"><span class="pain-ic"><svg aria-hidden="true"><use href="#i-receipt"/></svg></span><p><strong>Três orçamentos, três lugares.</strong> Um por áudio, outro por e-mail, outro em foto. Na hora de comparar, um sumiu.</p></li>
+        <li class="reveal"><span class="pain-ic"><svg aria-hidden="true"><use href="#i-calendar"/></svg></span><p><strong>A prestação de contas é na semana que vem</strong> e as despesas estão espalhadas em notas, extratos e conversas.</p></li>
+        <li class="reveal"><span class="pain-ic"><svg aria-hidden="true"><use href="#i-question"/></svg></span><p><strong>“Quanto já gastamos este mês?”</strong> O conselho pergunta e você precisa de um dia inteiro para responder.</p></li>
+        <li class="reveal"><span class="pain-ic"><svg aria-hidden="true"><use href="#i-building"/></svg></span><p><strong>Mais de um prédio?</strong> Aí fica fácil confundir qual fornecedor atendeu qual condomínio.</p></li>
+      </ul>
+      <div class="turn reveal">
+        <p class="turn__big">O problema não é você. <br>É a falta de um sistema.</p>
+        <p>Memória, caderno e grupo de WhatsApp não foram feitos para administrar um condomínio. Você precisa de um lugar só, onde tudo fica anotado e o que é urgente aparece sozinho.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. MECANISMO -->
+  <section class="section" id="como-funciona">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Como funciona</p>
+        <h2>Conheça o Painel de Controle do Síndico</h2>
+        <p class="lead">Um único arquivo de Excel. Você registra cada coisa uma vez, e o painel mostra o que precisa da sua atenção.</p>
+      </div>
+
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step__n" aria-hidden="true">1</span>
+          <div>
+            <h3>Cadastre</h3>
+            <p>Informe seus condomínios e fornecedores. Uma vez só.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step__n" aria-hidden="true">2</span>
+          <div>
+            <h3>Registre</h3>
+            <p>Anote tarefas, manutenções, pedidos de moradores, orçamentos e despesas, cada um na sua aba.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step__n" aria-hidden="true">3</span>
+          <div>
+            <h3>Acompanhe</h3>
+            <p>Abra o painel, escolha o condomínio (ou “Todos”) e o mês. Pronto: está tudo ali.</p>
+          </div>
+        </li>
+      </ol>
+
+      <!-- Visualização: abas alimentam o painel -->
+      <div class="flow reveal" aria-label="As abas de controle alimentam o painel geral">
+        <div class="flow__tabs">
+          <span>Tarefas</span><span>Manutenções</span><span>Solicitações</span><span>Fornecedores</span><span>Orçamentos</span><span>Despesas</span>
+        </div>
+        <div class="flow__arrow" aria-hidden="true"><svg><use href="#i-arrow"/></svg></div>
+        <div class="flow__panel">
+          <p class="flow__title"><svg class="ic" aria-hidden="true"><use href="#i-panel"/></svg> Painel geral</p>
+          <ul>
+            <li><span class="tag tag--red">Atrasado</span> Tarefas e solicitações atrasadas</li>
+            <li><span class="tag tag--red">Vencida</span> Manutenções vencidas</li>
+            <li><span class="tag tag--amber">30 dias</span> Manutenções previstas</li>
+            <li><span class="tag tag--teal">Mês</span> Previsto × realizado, pago e a pagar</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Equação de valor: facilidade -->
+      <ul class="ease">
+        <li class="reveal"><svg class="ic" aria-hidden="true"><use href="#i-layers"/></svg><div><strong>Já vem pronto</strong><span>Não precisa montar nada do zero.</span></div></li>
+        <li class="reveal"><svg class="ic" aria-hidden="true"><use href="#i-file"/></svg><div><strong>Exemplo preenchido</strong><span>Veja como fica antes de usar a versão limpa.</span></div></li>
+        <li class="reveal"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg><div><strong>Passo a passo</strong><span>A aba “Comece aqui” guia quem tem Excel básico.</span></div></li>
+        <li class="reveal"><svg class="ic" aria-hidden="true"><use href="#i-bolt"/></svg><div><strong>Comece hoje</strong><span>Acesso imediato depois da confirmação.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5. O QUE TEM DENTRO -->
+  <section class="section section--gray" id="kit">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">O que tem dentro</p>
+        <h2>Cada aba resolve uma dor da rotina</h2>
+        <p class="lead">Planilha “Kit Síndico Organizado”, em Excel, sem macros. Vem em duas versões: uma limpa, para você usar, e uma de exemplo, já preenchida.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card card--wide reveal">
+          <span class="card__ic"><svg aria-hidden="true"><use href="#i-panel"/></svg></span>
+          <h3>Painel geral: a situação do condomínio em uma tela</h3>
+          <ul class="checks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Escolha “Todos” ou um condomínio, a data de referência e o mês financeiro.</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Veja tarefas em aberto e atrasadas, manutenções vencidas e as previstas para os próximos 30 dias, solicitações abertas e atrasadas.</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Valores do mês: previsto, realizado, diferença, pago e a pagar.</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Gráficos de tarefas por status e de despesas previstas × realizadas.</li>
+          </ul>
+        </article>
+
+        <article class="card reveal">
+          <span class="card__ic"><svg aria-hidden="true"><use href="#i-list"/></svg></span>
+          <h3>Tarefas</h3>
+          <p>Nada se perde entre uma conversa e outra. O que atrasou aparece no painel.</p>
+        </article>
+        <article class="card reveal">
+          <span class="card__ic"><svg aria-hidden="true"><use href="#i-wrench"/></svg></span>
+          <h3>Manutenções com histórico</h3>
+          <p>Saiba o que já foi feito e o que vence nos próximos 30 dias, antes de virar emergência.</p>
+        </article>
+        <article class="card reveal">
+          <span class="card__ic"><svg aria-hidden="true"><use href="#i-users"/></svg></span>
+          <h3>Solicitações de moradores</h3>
+          <p>Responda “em que pé está?” sem precisar rolar o WhatsApp.</p>
+        </article>
+        <article class="card reveal">
+          <span class="card__ic"><svg aria-hidden="true"><use href="#i-truck"/></svg></span>
+          <h3>Fornecedores</h3>
+          <p>Quem atende o condomínio, reunido num lugar só.</p>
+        </article>
+        <article class="card reveal">
+          <span class="card__ic"><svg aria-hidden="true"><use href="#i-scale"/></svg></span>
+          <h3>Orçamentos</h3>
+          <p>Compare as propostas lado a lado antes de decidir e mostre ao conselho como escolheu.</p>
+        </article>
+        <article class="card reveal">
+          <span class="card__ic"><svg aria-hidden="true"><use href="#i-money"/></svg></span>
+          <h3>Despesas</h3>
+          <p>Previsto, realizado, pago e a pagar. A prestação de contas deixa de ser um susto.</p>
+        </article>
+        <article class="card reveal">
+          <span class="card__ic"><svg aria-hidden="true"><use href="#i-building"/></svg></span>
+          <h3>Resumo por condomínio</h3>
+          <p>Cada prédio com sua própria visão. Até <strong>100 condomínios</strong> no mesmo arquivo, ideal para síndico profissional.</p>
+        </article>
+        <article class="card reveal">
+          <span class="card__ic"><svg aria-hidden="true"><use href="#i-bell"/></svg></span>
+          <h3>Alertas automáticos</h3>
+          <p>Atrasos, prazos vencendo, inconsistências e duplicidades. Sempre com rótulo em texto, não só cor.</p>
+        </article>
+        <article class="card reveal">
+          <span class="card__ic"><svg aria-hidden="true"><use href="#i-flag"/></svg></span>
+          <h3>Aba “Comece aqui”</h3>
+          <p>Passo a passo para quem tem conhecimento básico de Excel. Sem macros, nada para habilitar.</p>
+        </article>
+      </div>
+
+      <!-- Galeria de prints: troque os arquivos em assets/img/ por .webp (1200x750) -->
+      <h3 class="gallery-title reveal">Veja por dentro</h3>
+      <div class="gallery" role="list">
+        <figure class="reveal" role="listitem"><img src="assets/img/print-painel.svg" width="1200" height="750" loading="lazy" decoding="async" alt="Print do painel geral com indicadores e gráficos"><figcaption>Painel geral</figcaption></figure>
+        <figure class="reveal" role="listitem"><img src="assets/img/print-tarefas.svg" width="1200" height="750" loading="lazy" decoding="async" alt="Print da aba de tarefas com status e alertas"><figcaption>Tarefas</figcaption></figure>
+        <figure class="reveal" role="listitem"><img src="assets/img/print-manutencoes.svg" width="1200" height="750" loading="lazy" decoding="async" alt="Print da aba de manutenções com histórico"><figcaption>Manutenções</figcaption></figure>
+        <figure class="reveal" role="listitem"><img src="assets/img/print-orcamentos.svg" width="1200" height="750" loading="lazy" decoding="async" alt="Print da aba de orçamentos comparando propostas"><figcaption>Orçamentos</figcaption></figure>
+        <figure class="reveal" role="listitem"><img src="assets/img/print-despesas.svg" width="1200" height="750" loading="lazy" decoding="async" alt="Print da aba de despesas com previsto e realizado"><figcaption>Despesas</figcaption></figure>
+        <figure class="reveal" role="listitem"><img src="assets/img/print-comece-aqui.svg" width="1200" height="750" loading="lazy" decoding="async" alt="Print da aba Comece aqui com o passo a passo"><figcaption>Comece aqui</figcaption></figure>
+      </div>
+
+      <p class="center reveal"><a class="btn btn--cta" href="#ofertas">Ver opções e preços <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+    </div>
+  </section>
+
+  <!-- 6. PARA QUEM É -->
+  <section class="section" id="para-quem">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>É para você?</h2>
+      </div>
+      <div class="fit">
+        <div class="fit__col fit__col--yes reveal">
+          <h3>É para você se…</h3>
+          <ul>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>É <strong>síndico morador</strong> e quer parar de depender da memória e do WhatsApp.</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>É <strong>síndico profissional</strong> e cuida de vários condomínios ao mesmo tempo.</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>É <strong>subsíndico ou do conselho</strong> e quer acompanhar contas e manutenções.</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Quer parecer (e estar) organizado diante dos moradores.</span></li>
+          </ul>
+        </div>
+        <div class="fit__col fit__col--no reveal">
+          <h3>Não é para você se…</h3>
+          <ul>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>Procura um aplicativo com mensalidade e acesso para os moradores.</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>Quer um sistema que emita boletos ou faça a contabilidade.</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>Não tem acesso a um computador com Excel para preencher a planilha.</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>Espera orientação jurídica ou contábil. O kit é apoio administrativo.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. BÔNUS -->
+  <section class="section section--navy" id="bonus">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow eyebrow--light">Exclusivo da oferta Completa</p>
+        <h2>3 ferramentas extras para o resto da rotina</h2>
+        <p class="lead">Por <strong>R$<span data-bind="diferenca">10</span> a mais</strong>, você leva os três. Dá cerca de <span data-bind="por-bonus">R$3,33</span> por bônus.</p>
+      </div>
+
+      <div class="bonus-list">
+        <article class="bonus reveal">
+          <div class="bonus__head">
+            <span class="bonus__ic"><svg aria-hidden="true"><use href="#i-home"/></svg></span>
+            <div>
+              <p class="bonus__tag">Bônus 1 • Exclusivo da oferta Completa</p>
+              <h3>Kit de Boas-Vindas ao Morador</h3>
+            </div>
+          </div>
+          <p class="bonus__problem"><strong>Resolve:</strong> todo morador novo faz as mesmas perguntas, e cada um recebe uma resposta diferente.</p>
+          <ul class="checks checks--light">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Manual do morador editável (Word e PDF), com exemplo preenchido.</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>5 mensagens prontas para WhatsApp.</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Checklist de integração do novo morador.</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Cartão de contatos úteis.</li>
+          </ul>
+        </article>
+
+        <article class="bonus reveal">
+          <div class="bonus__head">
+            <span class="bonus__ic"><svg aria-hidden="true"><use href="#i-key"/></svg></span>
+            <div>
+              <p class="bonus__tag">Bônus 2 • Exclusivo da oferta Completa</p>
+              <h3>Controle de Chaves e Equipamentos</h3>
+            </div>
+          </div>
+          <p class="bonus__problem"><strong>Resolve:</strong> “quem pegou a chave da casa de máquinas?” e ninguém sabe responder.</p>
+          <ul class="checks checks--light">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Planilha que registra quem retirou cada chave, controle ou ferramenta e quando devolveu.</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Painel de itens disponíveis, em uso, atrasados e em manutenção.</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Lista de pendências e conferência automática de erros.</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Guia rápido em PDF.</li>
+          </ul>
+        </article>
+
+        <article class="bonus reveal">
+          <div class="bonus__head">
+            <span class="bonus__ic"><svg aria-hidden="true"><use href="#i-folder"/></svg></span>
+            <div>
+              <p class="bonus__tag">Bônus 3 • Exclusivo da oferta Completa</p>
+              <h3>Organizador de Documentos Digitais</h3>
+            </div>
+          </div>
+          <p class="bonus__problem"><strong>Resolve:</strong> ata, contrato, apólice… quando você precisa, está “em algum lugar” do computador ou do celular.</p>
+          <ul class="checks checks--light">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Estrutura de pastas pronta, com 10 categorias (atas, financeiro, contratos, manutenções, seguros e outras).</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Guia de organização em PDF.</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Padrão de nomes de arquivos.</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Índice de documentos em Excel.</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Checklist mensal.</li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="center reveal"><a class="btn btn--cta" href="#ofertas">Quero o kit com os 3 bônus <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+    </div>
+  </section>
+
+  <!-- 8. OFERTAS -->
+  <section class="section section--gray" id="ofertas" aria-labelledby="ofertas-titulo">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Escolha sua opção</p>
+        <h2 id="ofertas-titulo">Comece a organizar hoje</h2>
+        <p class="lead">Pagamento único. Os arquivos chegam no seu e-mail logo após a confirmação.</p>
+      </div>
+
+      <p class="urgency" id="urgencia" hidden></p>
+
+      <div class="offers">
+        <!-- Card COMPLETO (recomendado) -->
+        <article class="offer offer--main" aria-labelledby="of-completo">
+          <p class="offer__badge" data-bind="selo">Recomendado</p>
+          <h3 id="of-completo" class="offer__name">Kit Síndico Completo</h3>
+          <p class="offer__desc">Kit + 3 bônus para toda a rotina do condomínio</p>
+          <p class="offer__price">
+            <s class="offer__old" data-old="completo" hidden></s>
+            <span class="offer__cur">R$</span><span class="offer__val" data-bind="preco-completo">27</span>
+            <span class="offer__once">pagamento único</span>
+          </p>
+          <p class="offer__contrast"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span>Só R$<span data-bind="diferenca">10</span> a mais que o Essencial: cerca de <span data-bind="por-bonus">R$3,33</span> por bônus.</span></p>
+          <ul class="offer__list">
+            <li><svg class="ic ok" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Painel de Controle do Síndico</strong>: tudo do condomínio numa tela</span></li>
+            <li><svg class="ic ok" aria-hidden="true"><use href="#i-check"/></svg><span>Versão limpa + versão de exemplo preenchida</span></li>
+            <li><svg class="ic ok" aria-hidden="true"><use href="#i-check"/></svg><span>Até 100 condomínios no mesmo arquivo</span></li>
+            <li><svg class="ic ok" aria-hidden="true"><use href="#i-check"/></svg><span>Alertas automáticos e aba “Comece aqui”</span></li>
+            <li class="is-bonus"><svg class="ic ok" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Bônus 1:</strong> Kit de Boas-Vindas ao Morador. Recebe o morador sem repetir as mesmas explicações.</span></li>
+            <li class="is-bonus"><svg class="ic ok" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Bônus 2:</strong> Controle de Chaves e Equipamentos. Sabe quem está com cada chave.</span></li>
+            <li class="is-bonus"><svg class="ic ok" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Bônus 3:</strong> Organizador de Documentos Digitais. Cada documento no seu lugar.</span></li>
+          </ul>
+          <a class="btn btn--cta btn--lg btn--block" href="#ofertas" data-checkout="completo">Quero o Kit Completo <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <p class="offer__fine"><span data-bind="pagamento">Pix e cartão</span> • Acesso enviado por e-mail logo após a confirmação</p>
+        </article>
+
+        <!-- Card ESSENCIAL -->
+        <article class="offer offer--alt" aria-labelledby="of-essencial">
+          <h3 id="of-essencial" class="offer__name">Kit Síndico Essencial</h3>
+          <p class="offer__desc">Só a planilha principal</p>
+          <p class="offer__price">
+            <s class="offer__old" data-old="essencial" hidden></s>
+            <span class="offer__cur">R$</span><span class="offer__val" data-bind="preco-essencial">17</span>
+            <span class="offer__once">pagamento único</span>
+          </p>
+          <ul class="offer__list">
+            <li><svg class="ic ok" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Painel de Controle do Síndico</strong>: tudo do condomínio numa tela</span></li>
+            <li><svg class="ic ok" aria-hidden="true"><use href="#i-check"/></svg><span>Versão limpa + versão de exemplo preenchida</span></li>
+            <li><svg class="ic ok" aria-hidden="true"><use href="#i-check"/></svg><span>Até 100 condomínios no mesmo arquivo</span></li>
+            <li><svg class="ic ok" aria-hidden="true"><use href="#i-check"/></svg><span>Alertas automáticos e aba “Comece aqui”</span></li>
+            <li class="is-out"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>Kit de Boas-Vindas ao Morador <em>(não incluído)</em></span></li>
+            <li class="is-out"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>Controle de Chaves e Equipamentos <em>(não incluído)</em></span></li>
+            <li class="is-out"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>Organizador de Documentos Digitais <em>(não incluído)</em></span></li>
+          </ul>
+          <a class="btn btn--outline btn--block" href="#ofertas" data-checkout="essencial">Quero só o Kit</a>
+          <p class="offer__fine"><span data-bind="pagamento">Pix e cartão</span> • Acesso enviado por e-mail logo após a confirmação</p>
+        </article>
+      </div>
+
+      <!-- Tabela comparativa -->
+      <div class="compare reveal">
+        <table>
+          <caption>Comparação entre as ofertas</caption>
+          <thead>
+            <tr><th scope="col">O que você recebe</th><th scope="col">Essencial</th><th scope="col" class="col-main">Completo</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Painel de Controle do Síndico (planilha completa)</th><td><svg class="ic ok" role="img" aria-label="Incluído"><use href="#i-check"/></svg></td><td class="col-main"><svg class="ic ok" role="img" aria-label="Incluído"><use href="#i-check"/></svg></td></tr>
+            <tr><th scope="row">Versão limpa + exemplo preenchido</th><td><svg class="ic ok" role="img" aria-label="Incluído"><use href="#i-check"/></svg></td><td class="col-main"><svg class="ic ok" role="img" aria-label="Incluído"><use href="#i-check"/></svg></td></tr>
+            <tr><th scope="row">Até 100 condomínios e alertas automáticos</th><td><svg class="ic ok" role="img" aria-label="Incluído"><use href="#i-check"/></svg></td><td class="col-main"><svg class="ic ok" role="img" aria-label="Incluído"><use href="#i-check"/></svg></td></tr>
+            <tr><th scope="row">Kit de Boas-Vindas ao Morador</th><td><svg class="ic no" role="img" aria-label="Não incluído"><use href="#i-x"/></svg></td><td class="col-main"><svg class="ic ok" role="img" aria-label="Incluído"><use href="#i-check"/></svg></td></tr>
+            <tr><th scope="row">Controle de Chaves e Equipamentos</th><td><svg class="ic no" role="img" aria-label="Não incluído"><use href="#i-x"/></svg></td><td class="col-main"><svg class="ic ok" role="img" aria-label="Incluído"><use href="#i-check"/></svg></td></tr>
+            <tr><th scope="row">Organizador de Documentos Digitais</th><td><svg class="ic no" role="img" aria-label="Não incluído"><use href="#i-x"/></svg></td><td class="col-main"><svg class="ic ok" role="img" aria-label="Incluído"><use href="#i-check"/></svg></td></tr>
+            <tr><th scope="row">Garantia de <span data-bind="garantia">7</span> dias</th><td><svg class="ic ok" role="img" aria-label="Incluído"><use href="#i-check"/></svg></td><td class="col-main"><svg class="ic ok" role="img" aria-label="Incluído"><use href="#i-check"/></svg></td></tr>
+            <tr class="row-price"><th scope="row">Preço (pagamento único)</th><td>R$<span data-bind="preco-essencial">17</span></td><td class="col-main">R$<span data-bind="preco-completo">27</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="offer-guarantee reveal"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> As duas opções têm garantia de <span data-bind="garantia">7</span> dias. Se não servir para você, devolvemos o valor pago.</p>
+    </div>
+  </section>
+
+  <!-- 9. GARANTIA -->
+  <section class="section" id="garantia">
+    <div class="container guarantee reveal">
+      <svg class="seal" viewBox="0 0 200 200" role="img" aria-labelledby="seal-t">
+        <title id="seal-t">Selo de garantia</title>
+        <defs><path id="seal-arc" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs>
+        <circle cx="100" cy="100" r="96" fill="#142D4E"/>
+        <circle cx="100" cy="100" r="86" fill="none" stroke="#F5A524" stroke-width="2" stroke-dasharray="4 5"/>
+        <circle cx="100" cy="100" r="58" fill="#168A87"/>
+        <text font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="3" fill="#fff"><textPath href="#seal-arc" startOffset="2%">GARANTIA • SATISFAÇÃO OU REEMBOLSO •</textPath></text>
+        <text x="100" y="104" text-anchor="middle" font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="46" font-weight="800" fill="#fff" data-bind="garantia">7</text>
+        <text x="100" y="128" text-anchor="middle" font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2" fill="#fff">DIAS</text>
+      </svg>
+      <div>
+        <h2>Teste por <span data-bind="garantia">7</span> dias. Sem risco.</h2>
+        <p>Baixe, abra e comece a preencher com os dados do seu condomínio. Se dentro de <span data-bind="garantia">7</span> dias você achar que o kit não é para você, é só pedir o reembolso por e-mail e você recebe de volta o valor integral.</p>
+        <p>Sem letras miúdas e sem precisar explicar o motivo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. PROVA SOCIAL (oculta até ter depoimentos reais em config.js) -->
+  <section class="section section--gray" id="depoimentos" hidden>
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Quem já usa</h2>
+      </div>
+      <div class="testimonials" id="depoimentos-lista"></div>
+    </div>
+  </section>
+
+  <!-- 11. SOBRE O CRIADOR (oculta até preencher config.js) -->
+  <section class="section" id="autor" hidden>
+    <div class="container narrow author reveal">
+      <img id="autor-foto" src="data:," width="160" height="160" loading="lazy" decoding="async" alt="" hidden>
+      <div>
+        <p class="eyebrow">Quem criou o kit</p>
+        <h2 id="autor-nome"></h2>
+        <p id="autor-texto"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. FAQ -->
+  <section class="section section--gray" id="faq">
+    <div class="container narrow">
+      <div class="section-head reveal">
+        <h2>Perguntas frequentes</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Preciso saber Excel?</summary>
+          <div class="faq__a"><p>Não precisa ser expert. Se você sabe abrir um arquivo e digitar numa célula, consegue usar. A aba “Comece aqui” mostra o passo a passo, e a versão de exemplo preenchida serve de guia.</p></div>
+        </details>
+        <details>
+          <summary>Funciona no Google Planilhas?</summary>
+          <div class="faq__a"><p>O kit foi feito para o Microsoft Excel. Ele pode ser aberto no Google Planilhas e em outros aplicativos, mas fórmulas, gráficos e formatações podem se comportar de forma diferente. Para a melhor experiência, use o Excel.</p></div>
+        </details>
+        <details>
+          <summary>Serve para mais de um condomínio?</summary>
+          <div class="faq__a"><p>Sim. A planilha gerencia até 100 condomínios no mesmo arquivo. No painel você escolhe “Todos” ou um condomínio específico, e a aba Resumo por Condomínio mostra cada um separadamente.</p></div>
+        </details>
+        <details>
+          <summary>Como recebo?</summary>
+          <div class="faq__a"><p>Logo após a confirmação do pagamento, o acesso aos arquivos é enviado para o e-mail informado na compra. Se não encontrar, confira a caixa de spam ou escreva para <a data-bind-mail href="#">[EMAIL_SUPORTE]</a>.</p></div>
+        </details>
+        <details>
+          <summary>Funciona no celular?</summary>
+          <div class="faq__a"><p>Dá para consultar pelo app do Excel no celular, mas ele tem limitações e a tela pequena dificulta o preenchimento. Recomendamos usar o computador para editar. Os guias em PDF podem ser lidos no celular normalmente.</p></div>
+        </details>
+        <details>
+          <summary>E se eu não gostar?</summary>
+          <div class="faq__a"><p>Você tem <span data-bind="garantia">7</span> dias de garantia. Peça o reembolso por e-mail dentro desse prazo e receba de volta o valor integral, sem precisar explicar o motivo.</p></div>
+        </details>
+        <details>
+          <summary>Qual a diferença entre as ofertas?</summary>
+          <div class="faq__a"><p>O <strong>Essencial</strong> (R$<span data-bind="preco-essencial">17</span>) traz só a planilha Kit Síndico. O <strong>Completo</strong> (R$<span data-bind="preco-completo">27</span>) traz a mesma planilha e mais 3 bônus: Kit de Boas-Vindas ao Morador, Controle de Chaves e Equipamentos e Organizador de Documentos Digitais. A diferença é de R$<span data-bind="diferenca">10</span>.</p></div>
+        </details>
+        <details>
+          <summary>É pagamento único?</summary>
+          <div class="faq__a"><p>Sim. Você paga uma vez e recebe os arquivos. Não há mensalidade nem renovação.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. CTA FINAL -->
+  <section class="section section--navy final" id="final">
+    <div class="container narrow center reveal">
+      <h2>O condomínio sob controle, a partir de hoje</h2>
+      <ul class="recap">
+        <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Veja num painel o que está atrasado, o que vence e quanto foi gasto.</li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Modelo pronto, com exemplo preenchido e passo a passo.</li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><span data-bind="garantia">7</span> dias de garantia: se não servir, seu dinheiro volta.</span></li>
+      </ul>
+      <a class="btn btn--cta btn--lg" href="#ofertas" data-checkout="completo"><span>Quero o Kit Completo por R$<span data-bind="preco-completo">27</span></span> <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <p class="final__alt"><a href="#ofertas" data-checkout="essencial">Prefiro só o Kit Essencial por R$<span data-bind="preco-essencial">17</span></a></p>
+    </div>
+  </section>
+
+</main>
+
+<!-- 14. RODAPÉ -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer__disclaimer">Este material é de apoio administrativo e não substitui contabilidade nem assessoria jurídica.</p>
+    <nav class="footer__links" aria-label="Links legais">
+      <a data-legal="privacidade" href="#" hidden>Política de privacidade</a>
+      <a data-legal="termos" href="#" hidden>Termos de uso</a>
+      <a data-bind-mail href="#" hidden>Contato: <span data-bind="email">[EMAIL_SUPORTE]</span></a>
+    </nav>
+    <p class="footer__copy">© <span id="ano">2026</span> Kit Síndico. Excel e Word são marcas da Microsoft; este produto não é afiliado à Microsoft.</p>
+  </div>
+</footer>
+
+<!-- 15. CTA FIXO MOBILE -->
+<div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+  <a class="btn btn--cta btn--block" href="#ofertas" tabindex="-1"><span>Kit Completo por R$<span data-bind="preco-completo">27</span></span> <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+</div>
+
+</body>
+</html>
