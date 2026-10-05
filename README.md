@@ -35,7 +35,7 @@ Para rodar localmente: `python3 -m http.server 5173` e abra http://localhost:517
 ### No `index.html`
 | Placeholder | Onde |
 |---|---|
-| `[URL_DO_SITE]` | `<head>`: canonical, `og:url`, `og:image` (precisa ser URL absoluta, ex.: `https://kitsindico.com.br`) |
+| URL do site | já preenchida: `https://www.kitsindicocompleto.online` (canonical e Open Graph no `<head>`) |
 | `[CONFIRMAR]` outros modelos do kit (ex.: comunicados) | não foram mencionados; só adiciono se você confirmar |
 
 ## Imagens para enviar
