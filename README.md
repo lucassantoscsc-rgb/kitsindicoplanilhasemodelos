@@ -46,7 +46,7 @@ Salve em `assets/img/` com estes nomes (WebP; troque a extensão `.svg` → `.we
 
 | Arquivo | Dimensão | Uso |
 |---|---|---|
-| `hero-painel.webp` | 1200 × 800 | print do Painel geral (hero, carrega primeiro, < 120 KB) |
+| `hero-condominio-*.webp` | 1200 × 900 e 800 × 600 | foto do topo (já colocada: Lia Angg / Unsplash) |
 | `print-painel.webp` | 1200 × 750 | galeria |
 | `print-tarefas.webp` | 1200 × 750 | galeria |
 | `print-manutencoes.webp` | 1200 × 750 | galeria |

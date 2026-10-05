@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
-  <link rel="preload" as="image" href="assets/img/hero-painel.svg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/hero-condominio-1200.webp" imagesrcset="assets/img/hero-condominio-800.webp 800w, assets/img/hero-condominio-1200.webp 1200w" imagesizes="(min-width: 960px) 540px, calc(100vw - 32px)" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <script>document.documentElement.classList.add('js');</script>
@@ -102,12 +102,21 @@
         <p class="microcopy">Acesso imediato • Arquivos para Excel e Word • Garantia de <span data-bind="garantia">7</span> dias</p>
       </div>
       <div class="hero__media">
-        <!-- Substitua por: assets/img/hero-painel.webp (1200x800). Mantenha width/height. -->
-        <div class="device">
-          <div class="device__bar" aria-hidden="true"><i></i><i></i><i></i></div>
-          <img src="assets/img/hero-painel.svg" width="1200" height="800" fetchpriority="high" decoding="async"
-               alt="Painel geral da planilha mostrando tarefas atrasadas, manutenções que vencem em 30 dias, solicitações abertas e despesas previstas versus realizadas">
-        </div>
+        <figure class="hero-photo">
+          <img src="assets/img/hero-condominio-1200.webp"
+               srcset="assets/img/hero-condominio-800.webp 800w, assets/img/hero-condominio-1200.webp 1200w"
+               sizes="(min-width: 960px) 540px, calc(100vw - 32px)"
+               width="1200" height="900" fetchpriority="high" decoding="async"
+               alt="Condomínio residencial com torres de apartamentos, piscina e palmeiras">
+          <div class="hero-card" aria-label="O que o Painel de Controle do Síndico mostra">
+            <p class="hero-card__title"><svg class="ic" aria-hidden="true"><use href="#i-panel"/></svg> Painel de Controle do Síndico</p>
+            <ul>
+              <li><span class="tag tag--red">Atrasado</span> Tarefas e solicitações</li>
+              <li><span class="tag tag--amber">30 dias</span> Manutenções a vencer</li>
+              <li><span class="tag tag--teal">Mês</span> Previsto × realizado</li>
+            </ul>
+          </div>
+        </figure>
       </div>
     </div>
   </section>
@@ -566,7 +575,7 @@
       <a data-legal="termos" href="#" hidden>Termos de uso</a>
       <a data-bind-mail href="#" hidden>Contato: <span data-bind="email">[EMAIL_SUPORTE]</span></a>
     </nav>
-    <p class="footer__copy">© <span id="ano">2026</span> Kit Síndico. Excel e Word são marcas da Microsoft; este produto não é afiliado à Microsoft.</p>
+    <p class="footer__copy">© <span id="ano">2026</span> Kit Síndico. Excel e Word são marcas da Microsoft; este produto não é afiliado à Microsoft. Foto do topo: Lia Angg / Unsplash.</p>
   </div>
 </footer>
 
