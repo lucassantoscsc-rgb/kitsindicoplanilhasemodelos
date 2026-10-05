@@ -41,7 +41,7 @@ window.KIT_CONFIG = {
   maisVendidoConfirmado: false,
 
   // ---- Contato e páginas legais ------------------------------
-  emailSuporte: "[EMAIL_SUPORTE]",       // ex.: "suporte@seudominio.com.br"
+  emailSuporte: "suporteplanilhass@gmail.com",
   links: {
     privacidade: "/privacidade",
     termos: "/termos"
