@@ -12,7 +12,7 @@ window.KIT_CONFIG = {
   // ---- Checkout (links externos) ----------------------------
   checkout: {
     essencial: "[LINK_CHECKOUT_17]", // ex.: "https://pay.exemplo.com/abc"
-    completo: "[LINK_CHECKOUT_27]"
+    completo: "https://pay.cakto.com.br/3pmy9fp_1169380"
   },
 
   // ---- Preços (número, em reais) ---------------------------
