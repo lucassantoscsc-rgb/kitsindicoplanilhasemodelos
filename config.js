@@ -43,8 +43,15 @@ window.KIT_CONFIG = {
   // ---- Contato e páginas legais ------------------------------
   emailSuporte: "[EMAIL_SUPORTE]",       // ex.: "suporte@seudominio.com.br"
   links: {
-    privacidade: "[LINK_PRIVACIDADE]",   // ex.: "/privacidade.html"
-    termos: "[LINK_TERMOS]"
+    privacidade: "/privacidade",
+    termos: "/termos"
+  },
+
+  // Responsável pela venda (aparece nos Termos e na Política de Privacidade).
+  // Vazio = os textos usam "Kit Síndico" e omitem o documento.
+  responsavel: {
+    nome: "[NOME_OU_RAZAO_SOCIAL]",      // ex.: "Lucas Santos" ou "Empresa X Ltda."
+    documento: "[CPF_OU_CNPJ]"           // ex.: "CNPJ 00.000.000/0001-00"
   },
 
   // ---- Rastreamento (só carrega se preenchido) ---------------

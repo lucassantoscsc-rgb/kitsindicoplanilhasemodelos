@@ -4,6 +4,8 @@ Site estático (HTML + CSS + JS puro), sem build. Pronto para Vercel ou Netlify:
 
 ```
 index.html            página
+privacidade.html      política de privacidade (/privacidade)
+termos.html           termos de uso (/termos)
 config.js             TUDO que você precisa alterar (links, preços, pixel, textos opcionais)
 assets/css/styles.css estilos (mobile-first)
 assets/js/main.js     preenchimento a partir do config, rastreamento, UTMs, CTA fixo
@@ -26,7 +28,7 @@ Para rodar localmente: `python3 -m http.server 5173` e abra http://localhost:517
 | `[URGENCIA_REAL]` | só se houver prazo/condição real | nenhuma urgência aparece |
 | `maisVendidoConfirmado` | `true` só se for verdade | selo "Recomendado" |
 | `[EMAIL_SUPORTE]` | e-mail de suporte | link do rodapé oculto; FAQ diz "o suporte" |
-| `[LINK_PRIVACIDADE]` / `[LINK_TERMOS]` | páginas legais | links ocultos (**preencha antes de rodar anúncios**) |
+| `[NOME_OU_RAZAO_SOCIAL]` / `[CPF_OU_CNPJ]` | quem vende (aparece em Termos e Privacidade) | textos usam "Kit Síndico" e omitem o documento |
 | `[META_PIXEL_ID]` | ID do Meta Pixel | Pixel não carrega |
 | `[GA4_ID]` | ID do GA4 (G-XXXX) | GA4 não carrega |
 | `[DEPOIMENTO_1..3]` (+ nome, função, cidade, foto) | depoimentos reais | seção "Quem já usa" oculta |
