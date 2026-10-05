@@ -53,7 +53,8 @@ Salve em `assets/img/` com estes nomes (WebP; troque a extensão `.svg` → `.we
 | `print-orcamentos.webp` | 1200 × 750 | galeria |
 | `print-despesas.webp` | 1200 × 750 | galeria |
 | `print-comece-aqui.webp` | 1200 × 750 | galeria |
-| `og-image.png` | 1200 × 630 | compartilhamento (já existe uma provisória) |
+| `og-image.png` | 1200 × 630 | compartilhamento (já feita com o logo) |
+| `logo-kit-sindico.png` | original | logo mestre; `logo.webp` (topo) e `logo-branco.webp` (rodapé) saem dele |
 | `autor.webp` (opcional) | 400 × 400 | sobre o criador |
 | fotos de depoimentos (opcional) | 160 × 160 | prova social |
 
