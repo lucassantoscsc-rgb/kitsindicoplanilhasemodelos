@@ -55,7 +55,7 @@ window.KIT_CONFIG = {
   },
 
   // ---- Rastreamento (só carrega se preenchido) ---------------
-  metaPixelId: "[META_PIXEL_ID]",        // ex.: "123456789012345"
+  metaPixelId: "1405292048401353",
   ga4Id: "[GA4_ID]",                     // ex.: "G-XXXXXXXXXX"
 
   // ---- Prova social (seção oculta enquanto estiver vazia) ----
