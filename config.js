@@ -16,16 +16,18 @@ window.KIT_CONFIG = {
   },
 
   // ---- Preços (número, em reais) ---------------------------
+  // Black Friday 2026: preços promocionais. Preços normais: 17 e 27.
+  // Ao fim da campanha, volte para 17 e 27 (e altere também na Cakto).
   precos: {
-    essencial: 17,
-    completo: 27
+    essencial: 14.9,
+    completo: 19.9
   },
 
   // Preço anterior REAL (se nunca existiu, deixe vazio).
   // Quando preenchido, aparece riscado no card ("De R$X").
   precoAnterior: {
-    essencial: "", // [PRECO_ANTERIOR_17] ex.: 27
-    completo: ""   // [PRECO_ANTERIOR_27] ex.: 47
+    essencial: 17, // preço praticado antes da Black Friday
+    completo: 27
   },
 
   // ---- Oferta ------------------------------------------------
@@ -34,7 +36,15 @@ window.KIT_CONFIG = {
 
   // Urgência REAL (ex.: "Preço de lançamento válido até 10/11").
   // Vazio = nenhuma mensagem de urgência na página.
-  urgencia: "",                          // [URGENCIA_REAL]
+  urgencia: "Preço de Black Friday válido até 30/11 (domingo), às 23h59.",
+
+  // Campanha com prazo real. Depois de "fim", a página esconde sozinha a faixa,
+  // o selo de desconto, o preço riscado e a urgência (os preços acima NÃO mudam
+  // sozinhos: altere-os aqui e na Cakto). Para desligar, use: campanha: null
+  campanha: {
+    nome: "Black Friday",
+    fim: "2026-11-30T23:59:59-03:00"
+  },
 
   // Mostrar o selo "Mais vendido" no lugar de "Recomendado"?
   // Só mude para true se isso for verdade.

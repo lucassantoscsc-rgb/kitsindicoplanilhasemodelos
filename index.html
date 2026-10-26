@@ -72,7 +72,8 @@
 
 <!-- 1. Barra superior -->
 <div class="topbar">
-  <p><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> Garantia de <span data-bind="garantia">7</span> dias &nbsp;•&nbsp; Acesso imediato por e-mail</p>
+  <p data-sem-camp><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> Garantia de <span data-bind="garantia">7</span> dias &nbsp;•&nbsp; Acesso imediato por e-mail</p>
+  <p class="topbar__camp" data-camp hidden><strong data-camp-nome>Black Friday</strong> &nbsp;•&nbsp; <span data-camp-oferta></span></p>
 </div>
 
 <header class="site-header">
@@ -95,6 +96,7 @@
   <section class="hero" id="topo">
     <div class="container hero__grid">
       <div class="hero__text">
+        <p class="camp-pill" data-camp hidden><span data-camp-nome>Black Friday</span>: <span data-camp-oferta></span></p>
         <p class="eyebrow">Para síndicos moradores e profissionais</p>
         <h1>Saiba o que está atrasado, o que vence e quanto foi gasto. <span class="hl">Tudo num painel só.</span></h1>
         <p class="hero__sub">O <strong>Painel de Controle do Síndico</strong> é uma planilha de Excel pronta que reúne tarefas, manutenções, pedidos de moradores, orçamentos e despesas — de um condomínio ou de até 100. Você não monta nada: só preenche.</p>
@@ -398,7 +400,7 @@
           <h3 id="of-completo" class="offer__name">Kit Síndico Completo</h3>
           <p class="offer__desc">Kit + 3 bônus para toda a rotina do condomínio</p>
           <p class="offer__price">
-            <s class="offer__old" data-old="completo" hidden></s>
+            <span class="offer__was"><span class="offer__old" data-old="completo" hidden></span><span class="offer__off" data-desconto="completo" hidden></span></span>
             <span class="offer__cur">R$</span><span class="offer__val" data-bind="preco-completo">27</span>
             <span class="offer__once">pagamento único</span>
           </p>
@@ -421,7 +423,7 @@
           <h3 id="of-essencial" class="offer__name">Kit Síndico Essencial</h3>
           <p class="offer__desc">Só a planilha principal</p>
           <p class="offer__price">
-            <s class="offer__old" data-old="essencial" hidden></s>
+            <span class="offer__was"><span class="offer__old" data-old="essencial" hidden></span><span class="offer__off" data-desconto="essencial" hidden></span></span>
             <span class="offer__cur">R$</span><span class="offer__val" data-bind="preco-essencial">17</span>
             <span class="offer__once">pagamento único</span>
           </p>

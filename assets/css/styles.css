@@ -89,6 +89,22 @@ ul { padding: 0; margin: 0; list-style: none; }
 .topbar p { margin: 0; padding: 8px var(--gutter); }
 .topbar .ic { color: var(--cta); }
 
+/* ---------- Campanha (ex.: Black Friday) ---------- */
+.has-campanha .topbar { background: #000; }
+.topbar__camp strong { color: var(--cta); letter-spacing: .04em; text-transform: uppercase; }
+.camp-pill {
+  display: inline-block; margin: 0 0 14px; padding: 6px 14px; border-radius: 999px;
+  background: #000; color: #fff; font-size: .85rem; font-weight: 700;
+}
+.camp-pill span:first-child { color: var(--cta); text-transform: uppercase; letter-spacing: .04em; }
+.offer__was { display: flex; align-items: center; gap: 8px; width: 100%; }
+.offer__was:not(:has(:not([hidden]))) { display: none; }
+.offer__off {
+  padding: 2px 9px; border-radius: 999px;
+  background: #000; color: #fff; font-size: .8rem; font-weight: 800;
+}
+.has-campanha .urgency { background: #000; color: #fff; }
+
 /* ---------- Cabeçalho com logo ---------- */
 .site-header { background: #fff; border-bottom: 1px solid var(--line); }
 .site-header .container { display: flex; justify-content: center; padding-top: 12px; padding-bottom: 12px; }
@@ -238,7 +254,7 @@ ul { padding: 0; margin: 0; list-style: none; }
 .offer__name { font-size: 1.45rem; margin-bottom: .2em; }
 .offer__desc { color: var(--muted); margin-bottom: 12px; }
 .offer__price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; color: var(--navy); }
-.offer__old { width: 100%; color: var(--off); font-size: .95rem; }
+.offer__old { color: var(--off); font-size: .95rem; }
 .offer__cur { font-size: 1.3rem; font-weight: 700; }
 .offer__val { font-size: 3.4rem; font-weight: 800; line-height: 1; letter-spacing: -.03em; }
 .offer--alt .offer__val { font-size: 2.6rem; }

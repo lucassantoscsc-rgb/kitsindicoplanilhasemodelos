@@ -19,7 +19,7 @@
   }
 
   var precos = cfg.precos || { essencial: 17, completo: 27 };
-  var diff = precos.completo - precos.essencial;
+  var diff = Math.round((precos.completo - precos.essencial) * 100) / 100;
   var OFERTAS = {
     essencial: { value: precos.essencial, name: "Kit Síndico Essencial" },
     completo: { value: precos.completo, name: "Kit Síndico Completo" }
@@ -61,15 +61,45 @@
     if (filled(url)) { a.href = url; a.hidden = false; }
   });
 
+  // Campanha com prazo (ex.: Black Friday). Depois do fim, tudo dela some.
+  var camp = cfg.campanha;
+  var campAtiva = !!(camp && filled(camp.nome) && (!camp.fim || Date.now() <= new Date(camp.fim).getTime()));
+  var campEncerrada = !!(camp && !campAtiva);
+  if (campAtiva) {
+    document.documentElement.classList.add("has-campanha");
+    $$("[data-camp-nome]").forEach(function (el) { el.textContent = camp.nome; });
+    var ant27 = (cfg.precoAnterior || {}).completo;
+    var oferta = "Kit Completo " + (filled(ant27) ? "de R$" + num(ant27) + " " : "") + "por R$" + num(precos.completo);
+    if (camp.fim) {
+      var f = new Date(camp.fim);
+      var dd = ("0" + f.toLocaleDateString("pt-BR", { day: "2-digit", timeZone: "America/Sao_Paulo" })).slice(-2);
+      var mm = f.toLocaleDateString("pt-BR", { month: "2-digit", timeZone: "America/Sao_Paulo" });
+      oferta += " até " + dd + "/" + mm;
+    }
+    $$("[data-camp-oferta]").forEach(function (el) { el.textContent = oferta; });
+    $$("[data-camp]").forEach(function (el) { el.hidden = false; });
+    $$("[data-sem-camp]").forEach(function (el) { el.hidden = true; });
+  }
+
   // Preço anterior (somente se for real e preenchido)
   var antigo = cfg.precoAnterior || {};
   $$("[data-old]").forEach(function (el) {
-    var v = antigo[el.getAttribute("data-old")];
-    if (filled(v)) { el.textContent = "De R$" + num(v) + " por"; el.hidden = false; }
+    var k = el.getAttribute("data-old");
+    var v = antigo[k];
+    if (filled(v) && !campEncerrada && Number(v) > Number(precos[k])) {
+      var riscado = document.createElement("s");
+      riscado.textContent = "R$" + num(v);
+      el.textContent = "De ";
+      el.appendChild(riscado);
+      el.appendChild(document.createTextNode(" por"));
+      el.hidden = false;
+      var off = Math.round((1 - precos[k] / v) * 100);
+      $$('[data-desconto="' + k + '"]').forEach(function (b) { b.textContent = "-" + off + "%"; b.hidden = false; });
+    }
   });
 
-  // Urgência (somente se real e preenchida)
-  if (filled(cfg.urgencia)) {
+  // Urgência (somente se real e preenchida; some quando a campanha acaba)
+  if (filled(cfg.urgencia) && !campEncerrada) {
     var u = $("#urgencia");
     u.textContent = cfg.urgencia;
     u.hidden = false;
