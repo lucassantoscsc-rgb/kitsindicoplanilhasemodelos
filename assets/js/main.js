@@ -77,6 +77,27 @@
       oferta += " até " + dd + "/" + mm;
     }
     $$("[data-camp-oferta]").forEach(function (el) { el.textContent = oferta; });
+    $$('[data-bind="selo"]').forEach(function (el) { el.textContent = camp.nome; });
+
+    // Contagem regressiva até o fim REAL da campanha (não reinicia)
+    if (camp.fim) {
+      var fimMs = new Date(camp.fim).getTime();
+      var cds = $$("[data-countdown]");
+      var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+      var tick = function () {
+        var rest = fimMs - Date.now();
+        if (rest <= 0) { location.reload(); return; }
+        var t = Math.floor(rest / 1000);
+        var v = { d: Math.floor(t / 86400), h: Math.floor(t % 86400 / 3600), m: Math.floor(t % 3600 / 60), s: t % 60 };
+        cds.forEach(function (cd) {
+          Object.keys(v).forEach(function (k) { var b = cd.querySelector('[data-cd="' + k + '"]'); if (b) b.textContent = pad(v[k]); });
+        });
+      };
+      tick();
+      setInterval(tick, 1000);
+    } else {
+      $$("[data-countdown]").forEach(function (el) { el.hidden = true; });
+    }
     $$("[data-camp]").forEach(function (el) { el.hidden = false; });
     $$("[data-sem-camp]").forEach(function (el) { el.hidden = true; });
   }

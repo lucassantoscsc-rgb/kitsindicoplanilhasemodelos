@@ -89,27 +89,12 @@ ul { padding: 0; margin: 0; list-style: none; }
 .topbar p { margin: 0; padding: 8px var(--gutter); }
 .topbar .ic { color: var(--cta); }
 
-/* ---------- Campanha (ex.: Black Friday) ---------- */
-.has-campanha .topbar { background: #000; }
-.topbar__camp strong { color: var(--cta); letter-spacing: .04em; text-transform: uppercase; }
-.camp-pill {
-  display: inline-block; margin: 0 0 14px; padding: 6px 14px; border-radius: 999px;
-  background: #000; color: #fff; font-size: .85rem; font-weight: 700;
-}
-.camp-pill span:first-child { color: var(--cta); text-transform: uppercase; letter-spacing: .04em; }
-.offer__was { display: flex; align-items: center; gap: 8px; width: 100%; }
-.offer__was:not(:has(:not([hidden]))) { display: none; }
-.offer__off {
-  padding: 2px 9px; border-radius: 999px;
-  background: #000; color: #fff; font-size: .8rem; font-weight: 800;
-}
-.has-campanha .urgency { background: #000; color: #fff; }
-
 /* ---------- Cabeçalho com logo ---------- */
 .site-header { background: #fff; border-bottom: 1px solid var(--line); }
 .site-header .container { display: flex; justify-content: center; padding-top: 12px; padding-bottom: 12px; }
 .site-logo { display: inline-block; border-radius: 8px; }
 .site-logo img { height: 40px; width: auto; }
+.logo--branco { display: none; }
 
 /* ---------- Seções ---------- */
 .section { padding: 64px 0; }
@@ -255,6 +240,9 @@ ul { padding: 0; margin: 0; list-style: none; }
 .offer__desc { color: var(--muted); margin-bottom: 12px; }
 .offer__price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; color: var(--navy); }
 .offer__old { color: var(--off); font-size: .95rem; }
+.offer__was { display: flex; align-items: center; gap: 8px; width: 100%; }
+.offer__was:not(:has(:not([hidden]))) { display: none; }
+.offer__off { padding: 2px 9px; border-radius: 999px; background: #000; color: #fff; font-size: .8rem; font-weight: 800; }
 .offer__cur { font-size: 1.3rem; font-weight: 700; }
 .offer__val { font-size: 3.4rem; font-weight: 800; line-height: 1; letter-spacing: -.03em; }
 .offer--alt .offer__val { font-size: 2.6rem; }
@@ -432,3 +420,100 @@ ul { padding: 0; margin: 0; list-style: none; }
 .legal__toc ol { margin: 0; padding-left: 1.3em; columns: 1; }
 .legal__toc li { margin-bottom: 4px; }
 @media (min-width: 640px) { .legal__toc ol { columns: 2; column-gap: 32px; } }
+
+
+/* =========================================================
+   TEMA DA CAMPANHA (Black Friday)
+   Ligado pela classe .has-campanha no <html> (config.js → campanha).
+   ========================================================= */
+.has-campanha {
+  --bf-bg: #0A0A0A;
+  --bf-bg-2: #141414;
+  --bf-line: #2A2A2A;
+  --bf-text: #F2F2F2;
+  --bf-muted: #B5B5B5;
+  --bf-gold: #FFC233;
+}
+.has-campanha body { background: #fff; }
+
+/* Faixa e cabeçalho */
+.has-campanha .topbar { background: var(--bf-gold); color: #000; font-weight: 800; }
+.topbar__camp strong { text-transform: uppercase; letter-spacing: .08em; }
+.has-campanha .site-header { background: #000; border-bottom-color: var(--bf-line); }
+.has-campanha .logo--cor { display: none; }
+.has-campanha .logo--branco { display: block; }
+
+/* Hero escuro */
+.has-campanha .hero {
+  background:
+    radial-gradient(60% 50% at 85% 20%, rgba(255,194,51,.16) 0%, rgba(255,194,51,0) 70%),
+    var(--bf-bg);
+  color: var(--bf-text);
+}
+.has-campanha .hero h1 { color: #fff; }
+.has-campanha .hero__text .hl { color: var(--bf-gold); }
+.has-campanha .hero__sub { color: var(--bf-muted); }
+.has-campanha .hero__sub strong { color: #fff; }
+.has-campanha .microcopy { color: #9A9A9A; }
+.has-campanha .hero-card { color: var(--text); }
+.has-campanha .hero .eyebrow { display: none; }
+.has-campanha .hero { padding-top: 28px; }
+.has-campanha .hero-photo img { box-shadow: 0 30px 60px rgba(0,0,0,.6); outline: 1px solid var(--bf-line); }
+
+.camp-hero { margin: 0 0 20px; }
+.camp-hero__tag {
+  display: inline-block; margin: 0 0 10px; padding: 6px 14px; border-radius: 6px;
+  background: var(--bf-gold); color: #000; font-weight: 800; font-size: clamp(1.05rem, 3.6vw, 1.35rem);
+  letter-spacing: .12em; text-transform: uppercase; transform: rotate(-1.5deg);
+}
+.camp-hero__offer { margin: 0 0 14px; font-weight: 700; color: #fff; font-size: 1.05rem; }
+
+/* Contagem regressiva */
+.countdown { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.countdown__label { width: 100%; margin-bottom: -2px; font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--bf-gold); }
+.countdown__box {
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+  min-width: 56px; padding: 6px 6px; border-radius: 10px; background: var(--bf-bg-2); border: 1px solid var(--bf-line);
+}
+.countdown__box b { font-size: 1.4rem; line-height: 1; color: #fff; font-variant-numeric: tabular-nums; }
+.countdown__box small { margin-top: 4px; font-size: .68rem; color: var(--bf-muted); text-transform: uppercase; letter-spacing: .06em; }
+.countdown--center { justify-content: center; max-width: 420px; margin: 0 auto 32px; }
+.countdown--center .countdown__label { text-align: center; }
+
+/* Caixa "o problema não é você" */
+.has-campanha .turn { background: #000; }
+
+/* Bônus em preto */
+.has-campanha #bonus { background: var(--bf-bg); }
+.has-campanha .bonus { background: var(--bf-bg-2); border-color: var(--bf-line); }
+.has-campanha #bonus .eyebrow--light { color: var(--bf-gold); }
+
+/* Ofertas em preto */
+.has-campanha #ofertas { background: var(--bf-bg); color: var(--bf-text); }
+.has-campanha #ofertas h2 { color: #fff; }
+.has-campanha #ofertas .eyebrow { color: var(--bf-gold); }
+.has-campanha #ofertas .lead { color: var(--bf-muted); }
+.has-campanha .urgency { background: transparent; color: #fff; font-size: 1.05rem; margin-bottom: 12px; }
+.has-campanha .offer, .has-campanha .compare table { color: var(--text); }
+.has-campanha .offer { border-color: var(--bf-line); }
+.has-campanha .offer__list li.is-out { color: var(--off); }
+.has-campanha .offer--main { border: 3px solid var(--bf-gold); box-shadow: 0 0 0 6px rgba(255,194,51,.12), 0 30px 60px rgba(0,0,0,.5); }
+.has-campanha .offer__badge { background: var(--bf-gold); color: #000; letter-spacing: .12em; }
+.has-campanha .offer__off { background: #D92D20; }
+.has-campanha .compare caption { color: #fff; }
+.has-campanha .compare thead th { background: #000; }
+.has-campanha .compare thead th:last-child { background: #3D2E00; color: var(--bf-gold); }
+.has-campanha .offer-guarantee { color: var(--bf-muted); }
+.has-campanha .offer-guarantee .ic { color: var(--bf-gold); }
+
+/* CTA final e rodapé */
+.has-campanha .final { background: var(--bf-bg); }
+.has-campanha .footer { background: #000; }
+
+/* CTA fixo no celular */
+.has-campanha .sticky-cta { background: rgba(0,0,0,.96); border-top-color: var(--bf-line); }
+
+@media (min-width: 960px) {
+  .countdown__box { min-width: 64px; }
+  .countdown__box b { font-size: 1.6rem; }
+}

@@ -30,8 +30,17 @@
   <link rel="preload" as="image" href="assets/img/hero-condominio-1200.webp" imagesrcset="assets/img/hero-condominio-800.webp 800w, assets/img/hero-condominio-1200.webp 1200w" imagesizes="(min-width: 960px) 540px, calc(100vw - 32px)" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/styles.css">
 
-  <script>document.documentElement.classList.add('js');</script>
-  <script src="config.js" defer></script>
+  <script src="config.js"></script>
+  <script>
+    (function (d) {
+      d.classList.add('js');
+      // Liga o tema da campanha antes de pintar a página (evita "piscar" o tema normal)
+      try {
+        var c = (window.KIT_CONFIG || {}).campanha;
+        if (c && c.nome && (!c.fim || Date.now() <= new Date(c.fim).getTime())) d.classList.add('has-campanha');
+      } catch (e) {}
+    })(document.documentElement);
+  </script>
   <script src="assets/js/main.js" defer></script>
 </head>
 <body>
@@ -78,7 +87,7 @@
 
 <header class="site-header">
   <div class="container">
-    <a class="site-logo" href="#topo" aria-label="Kit Síndico — início"><img src="assets/img/logo.webp" width="480" height="109" alt="Kit Síndico — Planilhas e Modelos Prontos"></a>
+    <a class="site-logo" href="#topo" aria-label="Kit Síndico — início"><img class="logo--cor" src="assets/img/logo.webp" width="480" height="109" alt="Kit Síndico — Planilhas e Modelos Prontos"><img class="logo--branco" src="assets/img/logo-branco.webp" width="480" height="109" alt="Kit Síndico — Planilhas e Modelos Prontos"></a>
   </div>
 </header>
 
@@ -96,7 +105,17 @@
   <section class="hero" id="topo">
     <div class="container hero__grid">
       <div class="hero__text">
-        <p class="camp-pill" data-camp hidden><span data-camp-nome>Black Friday</span>: <span data-camp-oferta></span></p>
+        <div class="camp-hero" data-camp hidden>
+          <p class="camp-hero__tag" data-camp-nome>Black Friday</p>
+          <p class="camp-hero__offer" data-camp-oferta></p>
+          <div class="countdown" data-countdown aria-live="off">
+            <span class="countdown__label">Termina em</span>
+            <span class="countdown__box"><b data-cd="d">00</b><small>dias</small></span>
+            <span class="countdown__box"><b data-cd="h">00</b><small>horas</small></span>
+            <span class="countdown__box"><b data-cd="m">00</b><small>min</small></span>
+            <span class="countdown__box"><b data-cd="s">00</b><small>seg</small></span>
+          </div>
+        </div>
         <p class="eyebrow">Para síndicos moradores e profissionais</p>
         <h1>Saiba o que está atrasado, o que vence e quanto foi gasto. <span class="hl">Tudo num painel só.</span></h1>
         <p class="hero__sub">O <strong>Painel de Controle do Síndico</strong> é uma planilha de Excel pronta que reúne tarefas, manutenções, pedidos de moradores, orçamentos e despesas — de um condomínio ou de até 100. Você não monta nada: só preenche.</p>
@@ -392,6 +411,13 @@
       </div>
 
       <p class="urgency" id="urgencia" hidden></p>
+      <div class="countdown countdown--center" data-countdown data-camp hidden aria-live="off">
+        <span class="countdown__label">Termina em</span>
+        <span class="countdown__box"><b data-cd="d">00</b><small>dias</small></span>
+        <span class="countdown__box"><b data-cd="h">00</b><small>horas</small></span>
+        <span class="countdown__box"><b data-cd="m">00</b><small>min</small></span>
+        <span class="countdown__box"><b data-cd="s">00</b><small>seg</small></span>
+      </div>
 
       <div class="offers">
         <!-- Card COMPLETO (recomendado) -->
