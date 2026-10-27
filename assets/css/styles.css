@@ -202,6 +202,7 @@ ul { padding: 0; margin: 0; list-style: none; }
   -webkit-overflow-scrolling: touch;
 }
 .gallery figure { margin: 0; scroll-snap-align: start; background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.gallery-note { text-align: center; font-size: .85rem; color: var(--muted); margin: -14px 0 24px; }
 .gallery figcaption { padding: 10px 14px; font-weight: 700; font-size: .92rem; color: var(--navy); }
 
 /* ---------- Para quem ---------- */
