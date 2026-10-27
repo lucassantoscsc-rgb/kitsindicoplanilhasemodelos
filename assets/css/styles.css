@@ -169,6 +169,11 @@ ul { padding: 0; margin: 0; list-style: none; }
 .flow__arrow svg { width: 32px; height: 32px; transform: rotate(90deg); }
 .flow__panel { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px; border-top: 5px solid var(--teal); }
 .flow__title { font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+.flow__panel--shot { margin: 0; padding: 10px; border-top-width: 5px; }
+.flow__panel--shot img { width: 100%; border-radius: 8px; }
+.flow__panel--shot figcaption { font-size: .8rem; color: var(--muted); text-align: center; padding-top: 8px; }
+.kit-shot { display: block; margin-top: 22px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.kit-shot img { width: 100%; }
 .flow__panel li { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid var(--gray); font-size: .95rem; }
 .tag { flex: none; min-width: 74px; text-align: center; font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; padding: 3px 8px; border-radius: 6px; }
 .tag--red { background: var(--red-50); color: var(--red); }
@@ -386,7 +391,7 @@ ul { padding: 0; margin: 0; list-style: none; }
   .card--wide { grid-column: 1 / -1; }
   .card--wide .checks { columns: 2; column-gap: 32px; }
   .card--wide .checks li { break-inside: avoid; }
-  .gallery { grid-auto-flow: row; grid-template-columns: repeat(3, 1fr); grid-auto-columns: auto; overflow: visible; margin: 0 0 32px; padding: 0; }
+  .gallery { grid-auto-flow: row; grid-template-columns: repeat(4, 1fr); grid-auto-columns: auto; overflow: visible; margin: 0 0 32px; padding: 0; }
   .bonus-list { grid-template-columns: repeat(3, 1fr); }
   .offers { grid-template-columns: 1.12fr .88fr; gap: 28px; }
   .offer { padding: 32px 30px 26px; }
