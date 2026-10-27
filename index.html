@@ -129,13 +129,11 @@
                sizes="(min-width: 960px) 540px, calc(100vw - 32px)"
                width="1200" height="900" fetchpriority="high" decoding="async"
                alt="Condomínio residencial com torres de apartamentos, piscina e palmeiras">
-          <div class="hero-card" aria-label="O que o Painel de Controle do Síndico mostra">
+          <div class="hero-card hero-card--shot">
             <p class="hero-card__title"><svg class="ic" aria-hidden="true"><use href="#i-panel"/></svg> Painel de Controle do Síndico</p>
-            <ul>
-              <li><span class="tag tag--red">Atrasado</span> Tarefas e solicitações</li>
-              <li><span class="tag tag--amber">30 dias</span> Manutenções a vencer</li>
-              <li><span class="tag tag--teal">Mês</span> Previsto × realizado</li>
-            </ul>
+            <img src="assets/img/print-situacao.webp" width="700" height="410" decoding="async"
+                 alt="Print real do painel: 8 tarefas em aberto, 3 atrasadas, 3 manutenções vencidas, 4 nos próximos 30 dias, 5 solicitações abertas">
+            <p class="hero-card__note">Print real • dados de exemplo</p>
           </div>
         </figure>
       </div>
@@ -428,6 +426,7 @@
           <p class="offer__badge" data-bind="selo">Recomendado</p>
           <h3 id="of-completo" class="offer__name">Kit Síndico Completo</h3>
           <p class="offer__desc">Kit + 3 bônus para toda a rotina do condomínio</p>
+          <img class="offer__shot" src="assets/img/print-painel.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Print real do Painel geral da planilha incluída">
           <p class="offer__price">
             <span class="offer__was"><span class="offer__old" data-old="completo" hidden></span><span class="offer__off" data-desconto="completo" hidden></span></span>
             <span class="offer__cur">R$</span><span class="offer__val" data-bind="preco-completo">27</span>
@@ -451,6 +450,7 @@
         <article class="offer offer--alt" aria-labelledby="of-essencial">
           <h3 id="of-essencial" class="offer__name">Kit Síndico Essencial</h3>
           <p class="offer__desc">Só a planilha principal</p>
+          <img class="offer__shot" src="assets/img/print-painel.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Print real do Painel geral da planilha incluída">
           <p class="offer__price">
             <span class="offer__was"><span class="offer__old" data-old="essencial" hidden></span><span class="offer__off" data-desconto="essencial" hidden></span></span>
             <span class="offer__cur">R$</span><span class="offer__val" data-bind="preco-essencial">17</span>
@@ -589,6 +589,7 @@
         <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Modelo pronto, com exemplo preenchido e passo a passo.</li>
         <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><span data-bind="garantia">7</span> dias de garantia: se não servir, seu dinheiro volta.</span></li>
       </ul>
+      <figure class="final__shot"><img src="assets/img/print-painel.webp" width="1200" height="750" loading="lazy" decoding="async" alt="Print real do Painel geral do Kit Síndico"><figcaption>Print real • dados de exemplo (fictícios)</figcaption></figure>
       <a class="btn btn--cta btn--lg" href="#ofertas" data-checkout="completo"><span>Quero o Kit Completo por R$<span data-bind="preco-completo">27</span></span> <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       <p class="final__alt"><a href="#ofertas" data-checkout="essencial">Prefiro só o Kit Essencial por R$<span data-bind="preco-essencial">17</span></a></p>
     </div>
